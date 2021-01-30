@@ -19,3 +19,12 @@ add_action( 'wp_enqueue_scripts', 'wordpressapi_scripts' );
 add_action( 'after_setup_theme', 'wordpressapi_setup' );
 
 
+//sets up the dashboard display
+function register_api() {
+  register_post_type( 'brewery', [
+    'label' => 'Breweries', //this is what shows up in the dash
+    'public' => true, //a
+    'capability_type' => 'post'
+  ]);
+}
+add_action( 'init', 'register_api' );
