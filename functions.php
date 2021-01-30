@@ -30,4 +30,6 @@ function register_api() {
 add_action( 'init', 'register_api' );
 
 function get_api_data() {
+  $breweries = [];
+  $results = wp_remote_retrieve_body(wp_remote_get('https://loreleim.github.io/chickenapi/data/flat.json'));
 }
