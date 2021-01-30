@@ -32,4 +32,19 @@ add_action( 'init', 'register_api' );
 function get_api_data() {
   $breweries = [];
   $results = wp_remote_retrieve_body(wp_remote_get('https://loreleim.github.io/chickenapi/data/flat.json'));
+  $results = json_decode($results);
+
+  $breweries[] = $results;
+
+
+  foreach ($breweries[0] as $brewery) {
+    $postTitle = sanitize_title($brewery->name);
+
+    $inserted_brewery = wp_insert_post([
+      'post_name' => $postTitle,
+      'post_title' => $postTitle,
+      'post_type' => 'brewery',
+      'post_status' => 'publish'
+    ]);
+  };
 }
