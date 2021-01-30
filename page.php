@@ -1,5 +1,11 @@
 <?php get_header(); ?>
 <div class="container">
+	<div class="test">
+	<?php
+	  $results = wp_remote_retrieve_body(wp_remote_get('https://loreleim.github.io/chickenapi/data/flat.json')); //without retrieve body you'll get to much info
+	  echo print_r($results);
+	?>
+	</div>
 	<div class="main">
 		<?php if (have_posts()) : ?>
 		<?php while (have_posts()) : the_post(); ?>
