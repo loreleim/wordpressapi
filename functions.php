@@ -28,3 +28,6 @@ function register_api() {
   ]);
 }
 add_action( 'init', 'register_api' );
+
+function get_api_data() {
+}
